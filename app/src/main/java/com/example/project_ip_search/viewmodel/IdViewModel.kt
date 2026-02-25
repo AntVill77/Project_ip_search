@@ -1,7 +1,10 @@
 package com.example.project_ip_search.viewmodel
 
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -20,6 +23,11 @@ class IdViewModel @Inject constructor(private val repository: IdRepository) : Vi
     var state by mutableStateOf(IpState())
         private set
 
+    var text by mutableStateOf("")
+        private set
+
+    var items = mutableStateListOf(text)
+
     init {
         //getIpSingle()
     }
@@ -29,7 +37,6 @@ class IdViewModel @Inject constructor(private val repository: IdRepository) : Vi
             withContext(Dispatchers.IO){
                 val result = repository.getIpSingle(id)
                 state = state.copy(
-                    //ip = ip,
                     ip = result?.ip ?: "",
                     status = result?.status ?: "",
                     type = result?.type ?: "",
