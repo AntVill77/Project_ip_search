@@ -29,8 +29,8 @@ class IdRepository @Inject constructor(private val apiService: ApiService) {
         }
         return null
     }*/
-    suspend fun getIpSingle(): IpModel? {
-        val response = apiService.getIpSingle()
+    suspend fun getIpSingle(id: String): IpModel? {
+        val response = apiService.getIpSingle(id)
         if(response.isSuccessful){
             return response.body()
         }

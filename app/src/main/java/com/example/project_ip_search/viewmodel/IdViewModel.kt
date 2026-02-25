@@ -30,7 +30,7 @@ class IdViewModel @Inject constructor(private val repository: IdRepository) : Vi
 
     init {
        //fetchId()
-        getIpSingle()
+        //getIpSingle()
     }
 
     private fun fetchId() {
@@ -39,16 +39,16 @@ class IdViewModel @Inject constructor(private val repository: IdRepository) : Vi
                 val result = repository.getId()?.name
                // if (result != null) {
                     //_id.value = ((result ?: emptyList())
-                _id.value = (result ?: IpModel("0", "10","0")) as IpModel
+               // _id.value = (result ?: IpModel("0", "10","0")) as IpModel
               //  }
             }
         }
     }
 
-    fun getIpSingle(){
+    fun getIpSingle(id: String){
         viewModelScope.launch {
             withContext(Dispatchers.IO){
-                val result = repository.getIpSingle()
+                val result = repository.getIpSingle(id)
                 state = state.copy(
                     //ip = ip,
                     ip = result?.ip ?: "",
@@ -71,4 +71,12 @@ class IdViewModel @Inject constructor(private val repository: IdRepository) : Vi
             }
         }
     }*/
+
+    fun clean(){
+        state = state.copy(
+            ip =  "",
+            status =  "",
+            type =  ""
+        )
+    }
 }

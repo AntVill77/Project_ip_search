@@ -1,10 +1,12 @@
 package com.example.project_ip_search.view
 
+import android.annotation.SuppressLint
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -26,12 +28,39 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.project_ip_search.components.MainTopBar
 import com.example.project_ip_search.state.IpState
 import com.example.project_ip_search.viewmodel.IdViewModel
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeView(viewModel: IdViewModel) {
+fun HomeView(viewModel: IdViewModel, navController: NavController){
+  /*  Scaffold(
+        modifier = Modifier.padding(16.dp),
+
+      *//*  topBar = {
+            MainTopBar(title = "IP Details", onClickBackButton = {}) {
+                navController.navigate("SearchGameView")
+            }
+        }*//*
+    ) {
+        ContentHomeView(viewModel, navController)
+    }*/
+    Column(
+        modifier = Modifier
+            //  .background(Color(0xFF000000))
+            .padding(16.dp),
+        horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        ContentHomeView(viewModel, navController)
+    }
+
+}
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ContentHomeView(viewModel:IdViewModel, navController: NavController) {
     //val id by viewModel.id.collectAsState()
     val state = viewModel.state
     var text by remember{ mutableStateOf("") }
@@ -49,25 +78,19 @@ fun HomeView(viewModel: IdViewModel) {
         verticalArrangement = Arrangement.Center
     ) {
 
-        OutlinedTextField(
+        /*OutlinedTextField(
             value = text,
             onValueChange = { text = it },
             label = { Text("Label") }
         )
 
-        Button(onClick = {
-            viewModel.getIpSingle()
-            res = text
-            text = ""
-        }){
-            Text(text = "Search")
-        }
+
 
         TextField(
             value = res,
             onValueChange = { text = it },
             label = { Text("Label") }
-        )
+        )*/
         Text(
             text = state.ip,
             fontWeight = FontWeight.ExtraBold
@@ -80,6 +103,17 @@ fun HomeView(viewModel: IdViewModel) {
             text = state.type,
             fontWeight = FontWeight.ExtraBold
         )
+
+        Spacer(modifier = Modifier.padding(bottom = 64.dp))
+
+        Button(onClick = {
+            navController.navigate("SearchGameView")
+            viewModel.getIpSingle(text)
+            res = text
+            text = ""
+        }){
+            Text(text = "Regresar a busqueda")
+        }
     }
      //   }
    // }

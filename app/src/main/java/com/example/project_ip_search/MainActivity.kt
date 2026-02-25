@@ -14,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.project_ip_search.navigation.NavManager
 import com.example.project_ip_search.ui.theme.Project_ip_searchTheme
 import com.example.project_ip_search.view.HomeView
 import com.example.project_ip_search.viewmodel.IdViewModel
@@ -31,8 +32,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                   // NavManager(viewModel)
-                    HomeView(viewModel)
+                    NavManager(viewModel)
+                    //HomeView(viewModel)
                 }
             }
         }
