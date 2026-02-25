@@ -1,6 +1,7 @@
 package com.example.project_ip_search.di
 
 import com.example.project_ip_search.data.ApiService
+import com.example.project_ip_search.util.Constants.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,7 +18,8 @@ object AppModule {
     @Provides
     fun providesRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://ip-geo-location.p.rapidapi.com/")
+           // .baseUrl("https://ip-geo-location.p.rapidapi.com/")
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

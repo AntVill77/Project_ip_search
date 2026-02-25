@@ -1,7 +1,26 @@
 package com.example.project_ip_search.model
 
-data class IdModel(
-    val area: Area,
+/*data class GamesModel(
+    val count: Int,
+    val next: String,
+    //val previous: Any,
+    val results: List<IdModel>
+)*/
+/*data class IdModel(
+    val id: Int,
+    val name : String,
+   // val background_image: String
+)*/
+
+
+data class IpModel(
+    val ip: String,
+    //val postcode: Any,
+    val status: String,
+    val type: String
+)
+data class GamesModel(
+    val area: IdModel2,
     val asn: Asn,
     val city: City,
     val continent: Continent,
@@ -16,7 +35,7 @@ data class IdModel(
     val type: String
 )
 
-data class Area(
+data class IdModel2(
     val code: String,
     val geonameid: Int,
     val name: String
@@ -60,7 +79,7 @@ data class Currency(
 
 data class Flag(
     val emoji: String,
-    val `file`: String,
+    val file: String,
     val unicode: String
 )
 
