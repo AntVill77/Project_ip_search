@@ -13,9 +13,6 @@ interface ApiService{
     @GET(ENDPOINT + API_KEY)
     suspend fun getId(): Response<GamesModel>
 
-   // @GET(ENDPOINT + API_KEY)
-  //  suspend fun getIpSingle(): Response<IpModel>
-
     @GET("$ENDPOINT/{id}$API_KEY")
     suspend fun getIpSingle(@Path(value = "id") id: String): Response<IpModel>
 }

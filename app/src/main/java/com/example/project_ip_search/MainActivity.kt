@@ -33,7 +33,6 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     NavManager(viewModel)
-                    //HomeView(viewModel)
                 }
             }
         }

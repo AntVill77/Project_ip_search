@@ -1,23 +1,14 @@
 package com.example.project_ip_search.model
 
-/*data class GamesModel(
-    val count: Int,
-    val next: String,
-    //val previous: Any,
-    val results: List<IdModel>
-)*/
-/*data class IdModel(
-    val id: Int,
-    val name : String,
-   // val background_image: String
-)*/
-
-
 data class IpModel(
     val ip: String,
-    //val postcode: Any,
+    val postcode: Any,
     val status: String,
-    val type: String
+    val type: String,
+    val location: Location,
+    val city: City,
+    val continent: Continent,
+    val country: Country,
 )
 data class GamesModel(
     val area: IdModel2,

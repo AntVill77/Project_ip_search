@@ -18,7 +18,6 @@ object AppModule {
     @Provides
     fun providesRetrofit(): Retrofit {
         return Retrofit.Builder()
-           // .baseUrl("https://ip-geo-location.p.rapidapi.com/")
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

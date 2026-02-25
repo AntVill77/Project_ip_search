@@ -11,24 +11,14 @@ class IdRepository @Inject constructor(private val apiService: ApiService) {
     suspend fun getId(): IdModel2? {
         val response = apiService.getId()
         if (response.isSuccessful) {
-            //return response.body()?.status as List<IdModel>?
             return response.body()?.area
             Log.d("games2", "response $response")
         } else {
-            Log.d("games2", "response ${response.toString()}")
+            Log.d("games2", "response ${response}")
         }
         return null
     }
 
-
-   /* suspend fun getIpSingle(id: String): IpModel? {
-        val response = apiService.getIpSingle(id)
-
-        if(response.isSuccessful){
-            return response.body()
-        }
-        return null
-    }*/
     suspend fun getIpSingle(id: String): IpModel? {
         val response = apiService.getIpSingle(id)
         if(response.isSuccessful){
